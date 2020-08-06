@@ -5,7 +5,7 @@ import itertools
 
 # Set below parameters
 bucket = '<s3 bucket name: sagemaker-iris-dataset>'
-key = 'data/training/iris.csv'
+key = 'input/data/training/iris.csv'
 endpointName = 'scikit-<your-id>-yyyymmdd'
 
 # Pull our data from S3

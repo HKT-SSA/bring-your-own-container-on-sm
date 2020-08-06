@@ -48,7 +48,9 @@ aws s3api create-bucket --bucket sagemaker-iris-dataset-beyoung-20200806 --creat
 aws s3 cp . s3://sagemaker-iris-dataset-beyoung-20200806 --recursive
 ```
 
-(https://raw.githubusercontent.com/awslabs/amazon-sagemaker-examples/master/advanced_functionality/scikit_bring_your_own/data/iris.csv) to your computer. Then upload the data set into your s3 bucket. s3 bucket name as `sagemaker-iris-dataset-<your-id>/data/training/`
+
+s3 bucket name as `sagemaker-iris-dataset-<your-id>-yyyymmdd/data/training/`
+	
 	![](images/01-s3.png)
 
 

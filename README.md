@@ -49,9 +49,7 @@ aws s3 cp . s3://sagemaker-iris-dataset-beyoung-20200806 --recursive
 ```
 
 
-s3 bucket name as `sagemaker-iris-dataset-<your-id>-yyyymmdd/data/training/`
-	
-	![](images/01-s3.png)
+s3 bucket name as `sagemaker-iris-dataset-<your-id>-yyyymmdd/data/training/`![](images/01-s3.png)
 
 
 ### Create Training Job

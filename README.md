@@ -104,7 +104,7 @@ wget "https://raw.githubusercontent.com/HKT-SSA/bring-your-own-container-on-sm/m
 
 * modify the bucket name and endpoint
 * run `python3 test-endpoint-sample.py`
-	![](images/15-SageMaker.png)
+	![](images/16-SageMaker.png)
 
 ### Clean Up
 * SageMaker Endpoint

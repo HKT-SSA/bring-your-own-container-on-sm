@@ -22,14 +22,14 @@
 
 ### error debug
 1. `mv test_dir/input/config/hyperparameters.json test_dir/input/config/hyperparameters.json.bak`
-2. `./train_local.sh  sckit-<your-name>` You will see error in the console
+2. `./train_local.sh  scikit-<your-name>` You will see error in the console
 3. `cat test_dir/output/failure` to see failure
    ![](images/04-cloud9.png)
 4. `mv test_dir/input/config/hyperparameters.json.bak test_dir/input/config/hyperparameters.json`
 5. `./train_local.sh  scikit-<your-name>`
 
 ## Local Server Inference
-1. `./serve_local.sh <image-name> > output.log`
+1. `./serve_local.sh scikit-<your-name> > output.log`
     ![](images/05-cloud9.png)
 2. Open new shell terminal in cloud9
 3. `cd scikit_bring_your_own/container/local_test/`
@@ -73,22 +73,20 @@ s3 bucket name as `sagemaker-iris-dataset-<your-id>-yyyymmdd/data/training/`![](
 #### Create model 
 * model name: `scikit-<your-name>-yyyymmdd`
 	![](images/11-SageMaker.png)
-* Primary container: 
-	* `<your container path>:<tag>`
-	* model artifacts: s3 path with output file `s3://<bucket name>/models/<job name>/output/model.tar.gz`
 	![](images/12-SageMaker.png)
 * click create the model
 
-#### Create endpoint configuration
-* name: `scikit-<your-name>-yyyymmdd`
-* add model: `scikit-<your-name>-yyyymmdd`
-	![](images/13-SageMaker.png)
-
 #### Create an endpoint
 * name: `scikit-<your-name>-yyyymmdd`
-* select endpoint configuration `scikit-<your-name>-yyyymmdd`
+	![](images/13-SageMaker.png)
+	
+* new endpoint configuration: `scikit-<your-name>-yyyymmdd`
 	![](images/14-SageMaker.png)
-* create endpoint
+
+* create endpoint configration
+	![](images/15-SageMaker.png)
+	
+* click create endpoint
 
 ### Test the endpoint
 In cloud9, install pip3:

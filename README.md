@@ -5,7 +5,8 @@
 1. In cloud9, bash shell exec:
 `git clone https://github.com/awslabs/amazon-sagemaker-examples.git`
 
-1. `cd amazon-sagemaker-examples/advanced_functionality/scikit_bring_your_own/container/`
+1. `cp -r amazon-sagemaker-examples/advanced_functionality/scikit_bring_your_own/ /home/ec2-user/environment/.`
+1. `cd scikit_bring_your_own/container/`
 2. Build the docker image: `./build_and_push.sh <image-name>`. Image name suggest to use `scikit-<your-name>` format.
 	![](images/01-cloud9.png)
 
@@ -31,7 +32,7 @@
 1. `./serve_local.sh <image-name> > output.log`
     ![](images/05-cloud9.png)
 2. Open new shell terminal in cloud9
-3. `cd amazon-sagemaker-examples/advanced_functionality/scikit_bring_your_own/container/local_test/`
+3. `cd scikit_bring_your_own/container/local_test/`
 4. ` ./predict.sh payload.csv text/csv`
     ![](images/06-cloud9.png)
 
@@ -39,7 +40,15 @@
 
 ### Upload full data set to s3
 
-* download [Iris data set](https://raw.githubusercontent.com/awslabs/amazon-sagemaker-examples/master/advanced_functionality/scikit_bring_your_own/data/iris.csv) to your computer. Then upload the data set into your s3 bucket. s3 bucket name as `sagemaker-iris-dataset-<your-id>/data/training/`
+* remember to change the bucket name `sagemaker-iris-dataset-<your-id>-yyyymmdd`
+
+```
+cd /home/ec2-user/environment/scikit_bring_your_own/container/local_test/test_dir
+aws s3api create-bucket --bucket sagemaker-iris-dataset-beyoung-20200806 --create-bucket-configuration LocationConstraint=us-west-2
+aws s3 cp . s3://sagemaker-iris-dataset-beyoung-20200806 --recursive
+```
+
+(https://raw.githubusercontent.com/awslabs/amazon-sagemaker-examples/master/advanced_functionality/scikit_bring_your_own/data/iris.csv) to your computer. Then upload the data set into your s3 bucket. s3 bucket name as `sagemaker-iris-dataset-<your-id>/data/training/`
 	![](images/01-s3.png)
 
 
@@ -88,6 +97,12 @@ In cloud9, install pip3:
 * `sudo /usr/local/bin/pip3 install boto3 pandas`
 
 Download the `test-endpoint-sample.py` in the same github folder.
+
+``` 
+wget "https://raw.githubusercontent.com/HKT-SSA/bring-your-own-container-on-sm/master/test-endpoint-sample.py" \
+-O "/home/ec2-user/environment/test-endpoint-sample.py"
+```
+
 
 * modify the bucket name and endpoint
 * run `python3 test-endpoint-sample.py`
